@@ -1,0 +1,68 @@
+/**
+	@mainpage insertdox
+
+	@section Intro What is insertdox?
+
+	@c insertdox started as a tool to save myself some time when converting	existing
+	source code over to use <a href="http://www.doxygen.org">doxygen</a>-style
+	comments. I found I	was spending a significant proportion of the time doing
+	'mechanical' editing to create parameter and return value lists, etc.
+	
+	This tool helps the process along by automating some of the more tedious
+	parts of that editing. Most of the work it performs is related to functions.
+	- generates a list of function arguments as @c \@param tags
+	- generates a @c \@return tag, and @c \@retval tags for the @c return
+	  statements it finds in the body of the function
+	- scans the comments in the body of the function for 'todo'- and
+	  'fixme'-type comments, and generates @c \@todo tags from them
+	
+	It tries to be somewhat smart about it, for example:
+	- doesn't generate @c \@param or @c \@return tags for @c void
+	- turns a type declaration to something vaguely human-readable, e.g. 
+	  <tt>char *argv[]</tt> turns into <tt>\@param argv a pointer to an
+	  array of char</tt>
+	- makes an educated guess about how to set the optional <tt>[in]</tt>
+	  and <tt>[in,out]</tt> parts of a @c \@param tag based on whether the
+	  parameter is a pointer, array or is declared @c const.
+	
+	If the file does not start with a comment, @c insertdox will insert
+	a template comment block which includes a @c \@file tag, along with
+	a @c \@todo tag reminding you to edit the comment. If there's an
+	existing comment at the beginning of the file, it's converted to a
+	doxygen comment block. In either case, a file containing 'boilerplate'
+	text can be appended to that first comment. This is handy for copyright
+	and license	notices.
+	
+	Obviously this tool can't 'magically' increase the semantic content -
+	you're still going to have to go through the comments and edit them
+	to convey more meaning to other human beings. But at least you'll only
+	have to do that part, not that plus a whole bunch of copy/pasting and
+	reformatting...
+	
+	@section Usage
+	
+	@copydoc Usage
+	
+	@section Terms License
+	
+	\c insertdox is copyright &copy; 2005-2006 by Paul Chambers. It is
+	provided under the terms of the	@subpage License "Common Public License 1.0".
+	
+	Since this project is provided as open source, contributions are
+	welcome and encouraged. Please contact me at \e insertdox(at)bod.org
+	
+	@section Download
+
+	Source code can be downloaded <a href="insertdox.zip">here</a>.
+	The current version is 0.91.
+	
+	It should be portable across tools chains & environments. It's
+	written in strict ANSI C, and only standard C library routines are used.
+
+	It includes a project file for Microsoft Visual Studio C++ Express
+	and I plan to add a simple Makefile soon.
+	
+	@section Versions Version History
+	
+	Please see the @subpage History "Version History" page.
+*/
